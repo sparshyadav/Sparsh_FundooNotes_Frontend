@@ -1,0 +1,242 @@
+.signup-body-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.signup-form-container {
+    width: 50%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 25px 0;
+}
+
+.signup-form-container-center {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup-form-left-container {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.signup-left-input-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.signup-left-name-field {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.signup-left-password-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.password-field-input {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.signup-left-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup-form-right-container {
+    width: 30%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.signup-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.yellow {
+    color: rgb(235, 155, 17);
+}
+
+.input-field-descriptors {
+    font-weight: 300;
+    color: grey;
+}
+
+.signup-right-image {
+    width: 100%;
+}
+
+.signup-right-image img {
+    width: 100%;
+}
+
+.signup-extra {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup-extra-div {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    color: grey;
+    font-size: 14px;
+}
+
+.dropdown {
+    border: none;
+    color: grey;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    outline: none;
+    appearance: none;
+    padding: 5px;
+}
+
+
+@media (max-width: 1080px) {
+    .signup-form-container {
+        width: 75%;
+    }
+
+    .signup-extra {
+        width: 75%;
+    }
+
+    .signup-left-name-field {
+        display: flex;
+    }
+
+    .signup-left-password-field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .password-field-input {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 840px) {
+    .signup-form-left-container {
+        flex-direction: column;
+    }
+
+    .signup-form-container {
+        width: 80%;
+    }
+
+    .signup-extra {
+        width: 80%;
+    }
+
+    .signup-left-name-field {
+        display: flex;
+    }
+
+    .signup-left-password-field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .password-field-input {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 525px) {
+    .signup-body-container {
+        height: unset;
+        padding: 2rem 0;
+    }
+
+    .signup-form-container {
+        border: none;
+    }
+
+    .signup-form-container-center {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .signup-form-left-container {
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .signup-form-right-container {
+        width: 90%;
+        height: 300px;
+    }
+
+    .signup-form-right-center {
+        height: 100%;
+    }
+
+    .signup-right-image {
+        height: 80%;
+    }
+
+    .signup-right-image img {
+        height: 100%;
+        width: 70%;
+    }
+
+    .signup-left-name-field {
+        flex-direction: column;
+    }
+
+    .password-field-input {
+        flex-direction: column;
+    }
+
+    .input-field {
+        width: 100%;
+    }
+
+    .signup-form-container {
+        width: 90%;
+    }
+
+    .signup-extra {
+        font-size: 10px !important;
+        font-weight: 400;
+    }
+
+    .dropdown {
+        width: 40%;
+    }
+
+    .signup-extra-div {
+        width: 45%;
+    }
+
+    .signup-button {
+        font-size: 12px !important;
+        height: 35px;
+    }
+
+    .login-button {
+        font-size: 10px;
+    }
+}
