@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './DashboardContainer.scss';
 import { Lightbulb, FolderDown, Trash2 } from "lucide-react";
 import './Sidebar.scss';
@@ -22,8 +22,18 @@ const sidebarItemsList = [
     }
 ];
 
-const Sidebar = ({ isCollapsed }) => {
+const Sidebar = () => {
     const location = useLocation();
+    const [isCollapsed, setIsCollapsed] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsCollapsed(window.innerWidth < 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <div className={`dashboard-sidebar ${isCollapsed ? 'collapsed' : ''}`}>
@@ -34,7 +44,7 @@ const Sidebar = ({ isCollapsed }) => {
                     <NavLink to={item.path} key={index}>
                         <div className={`sidebar-column ${isActive ? "notes" : ""}`}>
                             <IconComponent className='sidebar-icon' />
-                            <p className='sidebar-text'>{item.name}</p>
+                            {!isCollapsed && <p className='sidebar-text'>{item.name}</p>}
                         </div>
                     </NavLink>
                 );
@@ -44,3 +54,4 @@ const Sidebar = ({ isCollapsed }) => {
 };
 
 export default Sidebar;
+
