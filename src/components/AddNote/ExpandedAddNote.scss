@@ -1,0 +1,63 @@
+.expended-main-container{
+    border: 1px solid #E4E4E4;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    height: 125px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+    margin-top: 25px;
+    padding: 5px 0 5px 10px;
+}
+
+input{
+    outline: none;
+    border: none;
+    width: 90%;
+    // border: 1px solid green;
+}
+
+.expended-title{
+    height: 35%;
+}
+
+.title{
+    font-size: 18px;
+    color: #5F6368;
+}
+
+.expended-note{
+    height: 50%;
+}
+
+.note {
+    font-size: 15px;
+}
+
+
+.expended-options{
+    display: flex;
+    justify-content: space-between;
+    height: 25%;
+    align-items: center;
+}
+
+.options-left{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.options-right{
+    padding-right: 25px;
+}
+
+.expended-icons{
+    color: #5F6368;
+    width: 20px;
+    height: 20px;
+}
+
+
+

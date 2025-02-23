@@ -1,0 +1,17 @@
+.addnote-main-container{
+    min-height: 125px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.expanded-addnote{
+    width: 50%;
+    height: 25px;
+    border: 2px soild silver;
+}
+
+.options-right{
+    cursor: pointer;
+}
