@@ -59,5 +59,12 @@ input{
     height: 20px;
 }
 
+.title{
+    padding-top: 10px;
+}
 
-
+@media (max-width: 768px) {
+    .expended-main-container{
+        width: 80%;
+    }
+}
