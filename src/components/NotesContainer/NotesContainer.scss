@@ -1,11 +1,10 @@
 .notes-container{
-    // border: 1px solid violet;
-    width: 90%;
-    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 50px;
+    padding-bottom: 50px;
 }
 
 .notes-main-container{
@@ -14,16 +13,25 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 2px;
-    // border: 1px solid green;
 }
 
 .notes-addnote-component{
-    // border: 1px solid olive;
     width: 100%;
-    // height: 100%;
+    margin-bottom: 0;
 }
 
 
+@media (max-width: 768px) {
+    .notes-container{
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+    .notes-container{
+        width: 100%;
+    }
+}
 
 
 
