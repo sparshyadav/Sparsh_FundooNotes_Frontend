@@ -6,11 +6,12 @@ import Navbar from './Navbar';
 
 const DashboardContainer = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    // console.log("Outside : ", isCollapsed);
 
     const toggleSidebar = () => {
-        console.log("Value: ", isCollapsed);
+        console.log("Is Collapsed Before: ", isCollapsed);
         setIsCollapsed(prev => !prev);
-        console.log("Value: ", isCollapsed);
+        // console.log("Is Collapsed After: ", isCollapsed);
     };
 
     return (
@@ -18,10 +19,13 @@ const DashboardContainer = () => {
             <Navbar toggleSidebar={toggleSidebar} />
             <div className='dashboard-main-center'>
                 <Sidebar isCollapsed={isCollapsed} />
-                <Outlet />
+                <div className='main-content'>
+                    <Outlet />
+                </div>
             </div>
         </div>
     )
 }
 
 export default DashboardContainer;
+

@@ -4,6 +4,8 @@ import { Menu, RotateCw, Settings, Rows2, Grip, Search } from "lucide-react";
 import AccountMenu from './AccountMenu';
 
 function Navbar({ toggleSidebar }) {
+
+    // console.log(toggleSidebar)
     return (
         <div className='dashboard-header'>
             <div className='header-left'>

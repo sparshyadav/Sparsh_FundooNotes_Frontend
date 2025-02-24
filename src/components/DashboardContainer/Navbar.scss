@@ -6,11 +6,12 @@
 
 .dashboard-header {
     max-height: 100px;
+    min-height: 65px;
     border-bottom: 1px solid rgb(234, 233, 233);
     display: flex;
     align-items: center;
-    gap: 10%;
-    min-height: 65px;
+    justify-content: space-between;
+    padding: 0 15px;
 }
 
 .header-left {
@@ -19,9 +20,7 @@
 
 .header-right {
     display: flex;
-    max-width: 100%;
     width: 80%;
-    display: flex;
     justify-content: space-between;
     gap: 5%;
 }
@@ -29,9 +28,8 @@
 .dashboard-header-left-container {
     margin-left: 15px;
     display: flex;
-    justify-content: center;
-    gap: 10%;
     align-items: center;
+    gap: 10%;
     flex-shrink: 1;
     max-width: 500px;
 }
@@ -57,13 +55,14 @@
     font-weight: 400;
 }
 
+/* Search Bar */
 .dashboard-header-middle-container {
     width: 70%;
     max-width: 50%;
     background-color: #F1F3F4;
     display: flex;
-    min-height: 50px;
     align-items: center;
+    min-height: 50px;
     border-radius: 5px;
     gap: 5px;
     padding-left: 15px;
@@ -74,6 +73,7 @@
     height: 18px;
     width: 18px;
     color: #5F6368;
+    cursor: pointer;
 }
 
 .header-middle-search-input {
@@ -84,16 +84,16 @@
     width: 100%;
 }
 
+/* Right Section (Icons + Account Menu) */
 .dashboard-header-right-container {
-    margin-right: 25px;
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
     width: 300px;
     max-width: 40%;
-    align-items: center;
     min-width: 150px;
     gap: 8%;
-    justify-content: space-between;
-    flex-shrink: 1;
+    margin-right: 25px;
 }
 
 .header-right-container-icons {
@@ -112,6 +112,7 @@
     gap: 35px;
 }
 
+/* Icons */
 .icons {
     cursor: pointer;
     color: #5F6368;
@@ -129,14 +130,30 @@
     color: #5F6368;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
+    .header-left {
+        max-width: 30%;
+        border: 1px soild yellow;
+    }
+
+    /* Hide unnecessary elements */
+    .header-left-container-menu,
+    .header-right-container-icons,
+    .grid-icon,
+    .row-icon {
+        display: none !important;
+    }
+
     .header-right {
         justify-content: flex-end;
+        border: 1px soild red;
     }
 
     .dashboard-header-middle-container {
+        border: 1px soild red;
         width: auto;
-        max-width: none;
+        max-width: fit-content;
         background-color: transparent;
         padding-left: 0;
         justify-content: flex-end;
@@ -150,7 +167,27 @@
     .search-icon {
         height: 24px;
         width: 24px;
-        cursor: pointer;
+    }
+
+    .dashboard-header-right-container {
+        // border: 1px solid green;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: auto;
+        flex-grow: 1;
+        gap: 15px;
+        margin-right: 15px;
+    }
+
+    .header-middle-search-input{
+        border: 1px solid pink;
+    }
+
+    .header-right-container-account {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
     }
 }
 
@@ -161,35 +198,5 @@
 
     .header-right {
         justify-content: center;
-
-    }
-
-    .dashboard-header-middle-container {
-        width: auto;
-        max-width: none;
-        background-color: transparent;
-        padding-left: 0;
-        justify-content: flex-end;
-        flex-direction: row-reverse;
-    }
-
-    .header-middle-search-input,
-    .row-icon,
-    .grid-icon {
-        display: none;
-    }
-
-    .header-right-container-icons {
-        gap: 15px;
-    }
-
-    .header-right-container-account {
-        flex-direction: row-reverse;
-    }
-
-    .search-icon {
-        height: 24px;
-        width: 24px;
-        cursor: pointer;
     }
 }

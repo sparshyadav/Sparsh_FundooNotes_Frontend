@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import './DashboardContainer.scss';
 import { Lightbulb, FolderDown, Trash2 } from "lucide-react";
 import './Sidebar.scss';
@@ -22,18 +21,8 @@ const sidebarItemsList = [
     }
 ];
 
-const Sidebar = () => {
+const Sidebar = ({isCollapsed}) => {
     const location = useLocation();
-    const [isCollapsed, setIsCollapsed] = useState(window.innerWidth < 768);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsCollapsed(window.innerWidth < 768);
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     return (
         <div className={`dashboard-sidebar ${isCollapsed ? 'collapsed' : ''}`}>
