@@ -6,11 +6,14 @@ import AddNote from '../AddNote/AddNote';
 
 const NotesContainer = () => {
     const [notes, setNotes] = useState([]);
-
     useEffect(() => {
         getNotes()
             .then((response) => {
-                setNotes(response?.data?.data?.data || []);
+                let normalNotes = (response?.data?.data?.data || []).filter((note) => {
+                    return (!note.isArchived && !note.isDeleted);
+                })
+                setNotes(normalNotes.reverse());
+
 
                 if (response.status !== 200) {
                     throw new Error(response?.data?.message);
@@ -21,9 +24,17 @@ const NotesContainer = () => {
             });
     }, []);
 
-    const updateNoteList = (data) => {
-        setNotes((prevNotes) => [data, ...prevNotes]);
-        console.log("Notes: ", notes);
+    const updateNoteList = (response) => {
+        const { action, data } = response;
+
+        if (action === 'add') {
+            setNotes([{ title: data.title, description: data.description, id: data.id }, ...notes]);
+        }
+        else if (action === 'archive' || action === 'trash') {
+            setNotes(notes.filter((note) => {
+                return note.id !== data.id;
+            }))
+        }
     }
 
     return (
@@ -37,6 +48,8 @@ const NotesContainer = () => {
                         key={note.id || index}
                         title={note.title}
                         description={note.description}
+                        noteDetails={note}
+                        updateList={updateNoteList}
                     />
                 ))}
             </div>
