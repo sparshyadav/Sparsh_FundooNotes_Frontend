@@ -1,7 +1,7 @@
-.note-card-main-container{
+.note-card-main-container {
     border: 1px solid #E0E0E0;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 8px;
     transition: 0.5s;
     width: 20%;
     display: flex;
@@ -9,27 +9,32 @@
     justify-content: space-between;
     padding: 10px;
     gap: 10px;
+    min-height: 150px;  
+    max-height: 200px;  
+    overflow: hidden;
 }
 
-.note-card-main-container:hover{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.note-card-main-container.expanded-card {
+    max-height: 250px;  
+}
 
-    .icons{
+.note-card-main-container:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+    .icons {
         opacity: 1;
     }
 }
 
-.card-container-info{
+.card-container-info {
     width: 100%;
-    height: 75%;
-    // border: 1px solid blue;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
-.card-container-options{
-    // border: 1px solid blue;
+.card-container-options {
     width: 100%;
     height: 25%;
     display: flex;
@@ -38,10 +43,61 @@
     align-items: center;
 }
 
-.icons{
+.icons {
     height: 20px;
     width: 20px;
     opacity: 0;
     transition: 0.5s;
 }
 
+.menu-icon {
+    margin-left: 25px;
+}
+
+@media (max-width: 768px) {
+    .note-card-main-container {
+        width: 28%;
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .card-desc {
+        font-size: 15px;
+        font-weight: 400;
+    }
+}
+
+@media (max-width: 520px) {
+    .note-card-main-container {
+        width: 40%;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .card-desc {
+        font-size: 12px;
+        font-weight: 400;
+    }
+}
+
+@media (max-width: 425px) {
+    .note-card-main-container {
+        width: 75%;
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .card-desc {
+        font-size: 15px;
+        font-weight: 400;
+    }
+}
