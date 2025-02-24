@@ -4,15 +4,13 @@ import './AddNote.scss'
 import ClosedAddNote from './ClosedAddNote';
 import ExpandedAddNote from './ExpandedAddNote';
 
-const AddNote = ({updateList}) => {
+const AddNote = ({ updateList }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('')
     const [isExpanded, setIsExpanded] = useState(false);
 
-    const handleAddNote = ({updateNoteList}) => {
+    const handleAddNote = () => {
         if (isExpanded && (title || description)) {
-            console.log("Title: ", title);
-            console.log("Description: ", description);
 
             addNoteApi({ title, description })
                 .then((response) => {
@@ -20,8 +18,7 @@ const AddNote = ({updateList}) => {
                     if (response.status !== 200) {
                         throw new Error(response?.data?.message);
                     }
-
-                    updateList({title, description});
+                    updateList({ action: "add", data: response.data.status.details });
                 })
                 .catch((error) => {
                     console.error("Error Adding Note:", error);
