@@ -36,3 +36,13 @@
 .addnote-icons{
     color: #5F6368;
 }
+
+@media (max-width: 768px) {
+    .closed-addnote-main-container{
+        width: 80%;
+    }
+
+    .closed-container-icons{
+        display: none;
+    }
+}
