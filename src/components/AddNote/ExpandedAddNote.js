@@ -2,14 +2,14 @@ import React from 'react'
 import './ExpandedAddNote.scss';
 import { BellPlus, UserPlus, Image, FolderDown, EllipsisVertical } from 'lucide-react';
 
-function ExpandedAddNote({ toggleView, setFunctions }) {
+function ExpandedAddNote({ toggleView, setFunctions, values = null }) {
     return (
         <div className='expended-main-container'>
             <div className='expended-title'>
-                <input className='title' type='text' placeholder='Title' onChange={(e) => setFunctions.setTitle(e.target.value)} />
+                <input value={values.title} className='title' type='text' placeholder='Title' onChange={(e) => setFunctions.setTitle(e.target.value)} />
             </div>
             <div className='expended-note note'>
-                <input className='note' type='textarea' placeholder='Take a Note...' onChange={(e) => setFunctions.setDescription(e.target.value)} />
+                <input value={values.description} className='note' type='textarea' placeholder='Take a Note...' onChange={(e) => setFunctions.setDescription(e.target.value)} />
             </div>
             <div className='expended-options'>
                 <div className='options-left'>
