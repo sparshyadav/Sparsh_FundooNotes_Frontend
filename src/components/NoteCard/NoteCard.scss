@@ -7,20 +7,20 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px;
+    padding-left: 15px;
     gap: 10px;
-    min-height: 150px;  
-    max-height: 200px;  
+    min-height: 150px;
+    max-height: 200px;
     overflow: hidden;
 }
 
 .note-card-main-container.expanded-card {
-    max-height: 250px;  
+    max-height: 250px;
 }
 
 .note-card-main-container:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
+
     .icons {
         opacity: 1;
     }
