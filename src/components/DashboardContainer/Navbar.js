@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect, useState } from 'react'
 import './Navbar.scss';
 import { Menu, RotateCw, Settings, Rows2, Grip, Search } from "lucide-react";
