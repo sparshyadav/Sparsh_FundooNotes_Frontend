@@ -14,7 +14,6 @@ const NotesContainer = () => {
                 })
                 setNotes(normalNotes.reverse());
 
-
                 if (response.status !== 200) {
                     throw new Error(response?.data?.message);
                 }
@@ -33,6 +32,15 @@ const NotesContainer = () => {
         else if (action === 'archive' || action === 'trash') {
             setNotes(notes.filter((note) => {
                 return note.id !== data.id;
+            }))
+        }
+        else if (action === 'edit') {
+            setNotes(notes.map((note) => {
+                if (note.id === data.id) {
+                    return data;
+                }
+
+                return note;
             }))
         }
     }
