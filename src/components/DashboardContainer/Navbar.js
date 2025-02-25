@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Navbar.scss';
 import { Menu, RotateCw, Settings, Rows2, Grip, Search } from "lucide-react";
 import AccountMenu from './AccountMenu';
+import { useLocation } from 'react-router-dom';
 
 function Navbar({ toggleSidebar }) {
+    const [navTitle, setNavTitle] = useState('Keep');
 
-    // console.log(toggleSidebar)
+    const location = useLocation();
+    const path = location.pathname.split('/')[2];
+
+    useEffect(() => {
+        if (path === '') {
+            setNavTitle('Keep');
+        }
+        else if (path === 'notes') {
+            setNavTitle("Notes")
+        }
+        else if (path === 'archive') {
+            setNavTitle("Archive");
+        }
+        else if (path === 'trash') {
+            setNavTitle("Trash");
+        }
+    }, [path])
+
     return (
         <div className='dashboard-header'>
             <div className='header-left'>
@@ -16,7 +35,7 @@ function Navbar({ toggleSidebar }) {
                     <div className='header-left-container-logo'>
                         <img src='https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png' alt='Image not Found' />
                     </div>
-                    <div className='header-left-container-title'>Keep</div>
+                    <div className='header-left-container-title'>{navTitle}</div>
                 </div>
             </div>
             <div className='header-right'>
@@ -36,7 +55,7 @@ function Navbar({ toggleSidebar }) {
                         <div className='icon-div-account grid-icon'><Grip className='header-icons' /></div>
                         <div className='icon-div-account'>
                             <AccountMenu />
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
