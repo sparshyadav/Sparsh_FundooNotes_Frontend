@@ -81,7 +81,22 @@ export const deleteNoteForeverApi = async (payload) => {
             }
         });
     } catch (error) {
-        console.error("Error in trashNoteApi: ", error);
+        console.error("Error in deleteNoteForeverApi: ", error);
+        throw error;
+    }
+};
+
+
+export const editNoteApi = async (payload) => {
+    try {
+
+        return await axios.post("https://fundoonotes.incubation.bridgelabz.com/api/notes/updateNotes", payload, {
+            headers: {
+                Authorization: localStorage.getItem('token')
+            }
+        });
+    } catch (error) {
+        console.error("Error in editNoteApi: ", error);
         throw error;
     }
 };
