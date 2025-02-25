@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
-import { addNoteApi } from '../../utils/API';
+import { addNoteApi, editNoteApi } from '../../utils/API';
 import './AddNote.scss'
 import ClosedAddNote from './ClosedAddNote';
 import ExpandedAddNote from './ExpandedAddNote';
+import { successToast } from '../../utils/Toast';
 
-const AddNote = ({ updateList }) => {
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('')
-    const [isExpanded, setIsExpanded] = useState(false);
+const AddNote = ({ updateList, expanded = false, noteDetails, handleIconClick }) => {
+    const [title, setTitle] = useState(noteDetails ? noteDetails.title : "");
+    const [description, setDescription] = useState(noteDetails ? noteDetails.description : "")
+    const [isExpanded, setIsExpanded] = useState(expanded);
 
     const handleAddNote = () => {
-        if (isExpanded && (title || description)) {
+        if (isExpanded && (title || description) && !noteDetails) {
 
             addNoteApi({ title, description })
                 .then((response) => {
@@ -19,6 +20,7 @@ const AddNote = ({ updateList }) => {
                         throw new Error(response?.data?.message);
                     }
                     updateList({ action: "add", data: response.data.status.details });
+                    successToast("Note Created Successfully");
                 })
                 .catch((error) => {
                     console.error("Error Adding Note:", error);
@@ -28,13 +30,18 @@ const AddNote = ({ updateList }) => {
             setDescription('');
         }
 
+        if (noteDetails) {
+            editNoteApi({ ...noteDetails, title, description, noteId: noteDetails.id });
+            handleIconClick('edit', { ...noteDetails, title, description });
+        }
+
         setIsExpanded(prev => !prev);
     };
 
     return (
         <div className='addnote-main-container'>
             {isExpanded ?
-                <ExpandedAddNote toggleView={handleAddNote} setFunctions={{ setTitle, setDescription }} />
+                <ExpandedAddNote toggleView={handleAddNote} setFunctions={{ setTitle, setDescription }} values={{ title, description }} />
                 :
                 <ClosedAddNote toggleView={handleAddNote} />
             }
