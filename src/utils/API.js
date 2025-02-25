@@ -100,3 +100,17 @@ export const editNoteApi = async (payload) => {
         throw error;
     }
 };
+
+export const changeColorAPI = async (payload) => {
+    try {
+
+        return await axios.post("https://fundoonotes.incubation.bridgelabz.com/api/notes/changesColorNotes", payload, {
+            headers: {
+                Authorization: localStorage.getItem('token')
+            }
+        });
+    } catch (error) {
+        console.error("Error in editNoteApi: ", error);
+        throw error;
+    }
+};
