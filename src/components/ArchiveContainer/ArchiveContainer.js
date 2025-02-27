@@ -11,8 +11,8 @@ const ArchiveContainer = () => {
         let archivedNotes = (response?.data?.data?.data || []).filter((note) => {
           return (note.isArchived);
         })
+        
         setNotes(archivedNotes.reverse());
-
 
         if (response.status !== 200) {
           throw new Error(response?.data?.message);
