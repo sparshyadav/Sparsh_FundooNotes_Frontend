@@ -22,7 +22,7 @@ const TrashContainer = () => {
   const updateNoteList = async (response) => {
     const { action, data } = response;
 
-    if (action === 'trash' || action === 'archive') {
+    if (action === 'trash') {
       setNotes(notes.filter((note) => {
         return note.id !== data.id;
       }))
