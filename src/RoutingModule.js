@@ -26,6 +26,10 @@ const RoutingModule = () => {
                     element: <NotesContainer />
                 },
                 {
+                    path: 'notes/:noteId',
+                    element: <NotesContainer />
+                },
+                {
                     path: 'trash',
                     element: <TrashContainer />
                 },
