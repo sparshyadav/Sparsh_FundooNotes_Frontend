@@ -26,10 +26,7 @@ const ArchiveContainer = () => {
   const updateNoteList = (response) => {
     const { action, data } = response;
 
-    if (action === 'add') {
-      setNotes([{ title: data.title, description: data.description, id: data.id }, ...notes]);
-    }
-    else if (action === 'archive' || action === 'trash') {
+    if (action === 'archive' || action === 'trash') {
       setNotes(notes.filter((note) => {
         return note.id !== data.id;
       }))
