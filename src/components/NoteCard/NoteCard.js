@@ -5,13 +5,17 @@ import LongMenu from './LongMenu';
 import { archiveNoteApi, changeColorAPI, deleteNoteForeverApi, trashNoteApi } from '../../utils/API';
 import Modal from '@mui/material/Modal';
 import AddNote from '../AddNote/AddNote';
+import { useNavigate } from 'react-router-dom';
 
 const MAX_DESCRIPTION_LENGTH = 125;
 
 const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
+    const navigate = useNavigate();
+
     const [editNote, setEditNote] = useState(false);
     const [showColors, setShowColors] = useState(false);
     const [selectedColor, setSelectedColor] = useState(noteDetails?.color || '#FFFFFF');
+
 
     const colors = [
         "#FFFFFF", "#FAAFA8", "#F39F76", "#FFF8B8",
@@ -20,22 +24,7 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
     ];
 
     const isLongDescription = description.length > MAX_DESCRIPTION_LENGTH;
-    const truncatedDescription = isLongDescription
-        ? description.substring(0, MAX_DESCRIPTION_LENGTH) + "..."
-        : description;
-
-    const handleColorSelect = (color) => {
-        setSelectedColor(color);
-        setShowColors(false);
-        changeColorAPI()
-            .then((response) => {
-                console.log("Response: ", response);
-            })
-            .catch((error) => {
-                console.error("Error changing color:", error);
-            });
-        updateList({ action: 'color', data: { ...noteDetails, color } });
-    };
+    const truncatedDescription = isLongDescription ? description.substring(0, MAX_DESCRIPTION_LENGTH) + "..." : description;
 
     const handleIconClick = async (action, data = null) => {
         if (action === 'edit') {
@@ -47,14 +36,16 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                 await archiveNoteApi({ "noteIdList": [`${noteDetails.id}`], "isArchived": !noteDetails.isArchived });
                 updateList({ action: "archive", data: { ...noteDetails, isArchived: !noteDetails.isArchived } });
             } else if (action === 'trash') {
-                let response = await trashNoteApi({ "noteIdList": [`${noteDetails.id}`], "isDeleted": !noteDetails.isDeleted });
-
-                if (response.status === 200) {
-                    updateList({ action: "trash", data: { ...noteDetails, isDeleted: !noteDetails.isDeleted } });
-                }
+                await trashNoteApi({ "noteIdList": [`${noteDetails.id}`], "isDeleted": !noteDetails.isDeleted });
+                updateList({ action: "trash", data: { ...noteDetails, isDeleted: !noteDetails.isDeleted } });
             } else if (action === 'deleteForever') {
                 await deleteNoteForeverApi({ "noteIdList": [`${noteDetails.id}`] });
                 updateList({ action: "trash", data: { ...noteDetails, isDeleted: false } });
+            }
+            else if (action === 'color') {
+                setShowColors(false);
+                changeColorAPI({ "noteIdList": [`${noteDetails.id}`], color: data });
+                updateList({ action: 'color', data: { ...noteDetails, color: selectedColor } });
             }
         } catch (error) {
             console.error("Error performing action:", error);
@@ -66,15 +57,18 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
             className={`note-card-main-container ${isLongDescription ? 'expanded-card' : ''}`}
             style={{ backgroundColor: selectedColor }}
         >
-            <div className='card-container-info' onClick={() => setEditNote(true)}>
+            <div className='card-container-info' onClick={() => {
+                setEditNote(true);
+                navigate(`/dashboard/notes/${noteDetails.id}`);
+            }}>
                 <h3 className='card-title'>{title}</h3>
                 <p className='card-desc'>{truncatedDescription}</p>
             </div>
             <div className='card-container-options'>
                 {noteDetails?.isDeleted ? (
                     <>
-                        <ArchiveRestore onClick={() => handleIconClick('trash')} className='icons' />
-                        <Trash2 onClick={() => handleIconClick('deleteForever')} className='icons' />
+                        <ArchiveRestore className='icons' onClick={() => handleIconClick('trash')} />
+                        <Trash2 className='icons' onClick={() => handleIconClick('deleteForever')} />
                     </>
                 ) : (
                     <>
@@ -90,7 +84,10 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                                             key={color}
                                             className="color-option"
                                             style={{ backgroundColor: color }}
-                                            onClick={() => handleColorSelect(color)}
+                                            onClick={() => {
+                                                setSelectedColor(color);
+                                                handleIconClick('color', color)
+                                            }}
                                         />
                                     ))}
                                 </div>
@@ -103,7 +100,10 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
             </div>
             <Modal
                 open={editNote}
-                onClose={() => setEditNote(false)}
+                onClose={() => {
+                    setEditNote(false);
+                    navigate(`/dashboard/notes`);
+                }}
                 className="custom-modal"
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
