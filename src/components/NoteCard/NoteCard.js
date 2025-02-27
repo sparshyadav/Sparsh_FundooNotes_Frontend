@@ -94,7 +94,10 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                             )}
                         </div>
                         <FolderDown onClick={() => handleIconClick('archive')} className='icons' />
-                        <LongMenu handleIconClick={handleIconClick} className='icons menu-icon' />
+                        <div className="long-menu-container">
+                            <LongMenu className='icons menu-icon' handleIconClick={handleIconClick} />
+                        </div>
+
                     </>
                 )}
             </div>
