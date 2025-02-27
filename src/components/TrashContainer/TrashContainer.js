@@ -8,7 +8,6 @@ const TrashContainer = () => {
   const fetchNotes = async () => {
     try {
       const response = await getNotes();
-      console.log("Response: ", response);
       let deletedNotes = (response?.data?.data?.data || []).filter((note) => note.isDeleted);
       setNotes(deletedNotes.reverse());
     } catch (error) {
@@ -21,10 +20,12 @@ const TrashContainer = () => {
   }, []);
 
   const updateNoteList = async (response) => {
-    const { action } = response;
+    const { action, data } = response;
 
     if (action === 'trash' || action === 'archive') {
-      await fetchNotes();
+      setNotes(notes.filter((note) => {
+        return note.id !== data.id;
+      }))
     }
   };
 
