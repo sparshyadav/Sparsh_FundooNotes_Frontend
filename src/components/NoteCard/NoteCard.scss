@@ -112,9 +112,9 @@
 
 .color-picker {
     position: absolute;
-    bottom: 30px;  
+    bottom: 30px;
     left: 50%;
-    transform: translateX(-50%); 
+    transform: translateX(-50%);
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -140,4 +140,21 @@
 
 .color-option:hover {
     transform: scale(1.2);
+}
+
+.long-menu-container {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.note-card-main-container:hover .long-menu-container {
+    opacity: 1;
+}
+
+.card-title,
+.card-desc {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 90%;
 }
