@@ -29,8 +29,7 @@ function Navbar({ toggleSidebar }) {
                         <img
                             src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
                             alt="Image not Found"
-                            onClick={() => setSearchedText("")} // Reset search when clicked
-                        />
+                            onClick={() => setSearchedText("")}/>
                     </div>
                     <div className="header-left-container-title" onClick={() => setSearchedText("")}>
                         {navTitle}
