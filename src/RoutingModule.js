@@ -6,6 +6,7 @@ import NotesContainer from './components/NotesContainer/NotesContainer';
 import TrashContainer from './components/TrashContainer/TrashContainer';
 import ArchiveContainer from './components/ArchiveContainer/ArchiveContainer';
 import Login from './components/Login/Login';
+import { NotesProvider } from './context/NotesContext';
 
 const RoutingModule = () => {
     const route = createBrowserRouter([
@@ -19,7 +20,9 @@ const RoutingModule = () => {
         },
         {
             path: '/dashboard',
-            element: <DashboardContainer />,
+            element: <NotesProvider>
+                        <DashboardContainer />
+                    </NotesProvider>,
             children: [
                 {
                     path: 'notes',
