@@ -1,15 +1,34 @@
-import React from 'react'
+import React from 'react';
 import './ExpandedAddNote.scss';
 import { BellPlus, UserPlus, Image, FolderDown, EllipsisVertical } from 'lucide-react';
 
 function ExpandedAddNote({ toggleView, setFunctions, values = null }) {
+    const numLines = values.description ? values.description.split('\n').length : 1;
+    const lineHeight = 20; 
+    const newHeight = Math.min(numLines, 25) * lineHeight;
+
     return (
         <div className='expended-main-container'>
             <div className='expended-title'>
-                <input value={values.title} className='title' type='text' placeholder='Title' onChange={(e) => setFunctions.setTitle(e.target.value)} />
+                <input 
+                    value={values.title} 
+                    className='title' 
+                    type='text' 
+                    placeholder='Title' 
+                    onChange={(e) => setFunctions.setTitle(e.target.value)} 
+                />
             </div>
             <div className='expended-note note'>
-                <input value={values.description} className='note' type='textarea' placeholder='Take a Note...' onChange={(e) => setFunctions.setDescription(e.target.value)} />
+                <textarea
+                    value={values.description}
+                    className='note-textarea'
+                    placeholder='Take a Note...'
+                    onChange={(e) => setFunctions.setDescription(e.target.value)}
+                    style={{ 
+                        height: `${newHeight}px`, 
+                        overflowY: numLines > 25 ? 'auto' : 'hidden' 
+                    }}
+                />
             </div>
             <div className='expended-options'>
                 <div className='options-left'>
@@ -24,7 +43,7 @@ function ExpandedAddNote({ toggleView, setFunctions, values = null }) {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default ExpandedAddNote
+export default ExpandedAddNote;

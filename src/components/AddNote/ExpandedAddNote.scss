@@ -1,71 +1,72 @@
-.expended-main-container{
+.expended-main-container {
     border: 1px solid #E4E4E4;
     width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 10px;
-    height: 125px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
     margin-top: 25px;
     padding: 5px 0 5px 10px;
     background-color: white;
+    transition: height 0.2s ease-in-out;
 }
 
-input{
+input, .note-textarea {
     outline: none;
     border: none;
     width: 90%;
+    font-family: inherit;
 }
 
-.expended-title{
+.expended-title {
     height: 35%;
 }
 
-.title{
+.title {
     font-size: 18px;
     color: #5F6368;
+    padding-top: 10px;
 }
 
-.expended-note{
-    height: 50%;
+.expended-note {
+    height: auto; 
 }
 
-.note {
+.note-textarea {
     font-size: 15px;
     color: #5F6368;
+    resize: none; 
+    padding: 5px;
+    border-radius: 5px;
+    width: 95%;
 }
 
-
-.expended-options{
+.expended-options {
     display: flex;
     justify-content: space-between;
-    height: 25%;
     align-items: center;
+    padding-top: 5px;
 }
 
-.options-left{
+.options-left {
     width: 60%;
     display: flex;
     justify-content: space-between;
 }
 
-.options-right{
+.options-right {
     padding-right: 25px;
 }
 
-.expended-icons{
+.expended-icons {
     color: #5F6368;
     width: 20px;
     height: 20px;
 }
 
-.title{
-    padding-top: 10px;
-}
-
 @media (max-width: 768px) {
-    .expended-main-container{
+    .expended-main-container {
         width: 80%;
     }
 }
