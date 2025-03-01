@@ -3,12 +3,19 @@ import { getNotes } from '../../utils/API';
 import NoteCard from '../NoteCard/NoteCard';
 import './NotesContainer.scss'
 import AddNote from '../AddNote/AddNote';
+import { useParams } from 'react-router-dom';
 
 const NotesContainer = () => {
     const [notes, setNotes] = useState([]);
+    // console.log(notes);
+
+    let noteId=useParams().noteId;
+    // console.log("Params: ", noteId);
+
     useEffect(() => {
         getNotes()
             .then((response) => {
+                // console.log("Response: ==>>", response);
                 let normalNotes = (response?.data?.data?.data || []).filter((note) => {
                     return (!note.isArchived && !note.isDeleted);
                 })
@@ -53,6 +60,7 @@ const NotesContainer = () => {
             <div className='notes-main-container'>
                 {notes.map((note, index) => (
                     <NoteCard
+                        style={{backgroundColor: note.color || 'white'}}
                         key={note.id || index}
                         title={note.title}
                         description={note.description}
