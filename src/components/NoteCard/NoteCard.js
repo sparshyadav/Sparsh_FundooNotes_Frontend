@@ -8,6 +8,7 @@ import AddNote from '../AddNote/AddNote';
 import { useNavigate } from 'react-router-dom';
 
 const MAX_DESCRIPTION_LENGTH = 125;
+const MAX_TITLE_LENGTH = 50;
 
 const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
     const navigate = useNavigate();
@@ -24,7 +25,9 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
     ];
 
     const isLongDescription = description.length > MAX_DESCRIPTION_LENGTH;
+    const isLongTitle = title.length > MAX_TITLE_LENGTH;
     const truncatedDescription = isLongDescription ? description.substring(0, MAX_DESCRIPTION_LENGTH) + "..." : description;
+    const truncatedTitle = isLongTitle ? title.substring(0, MAX_TITLE_LENGTH) + "..." : title;
 
     const handleIconClick = async (action, data = null) => {
         if (action === 'edit') {
@@ -61,7 +64,7 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                 setEditNote(true);
                 navigate(`/dashboard/notes/${noteDetails.id}`);
             }}>
-                <h3 className='card-title'>{title}</h3>
+                <h3 className='card-title'>{truncatedTitle}</h3>
                 <p className='card-desc'>{truncatedDescription}</p>
             </div>
             <div className='card-container-options'>
