@@ -63,7 +63,7 @@ function Navbar({ toggleSidebar }) {
                     </div>
                     <div className="header-right-container-account">
                         <div className="icon-div-account grid-icon">
-                            <Grip className="header-icons" />
+                            <Grip className="header-icons grid" />
                         </div>
                         <div className="icon-div-account">
                             <AccountMenu />
