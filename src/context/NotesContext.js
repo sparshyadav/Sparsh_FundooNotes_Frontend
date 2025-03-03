@@ -9,7 +9,7 @@ export const NotesProvider = ({ children }) => {
 
     useEffect(() => {
         fetchNotes();
-    }, []);
+    }, [notes]);
 
     const fetchNotes = async () => {
         try {
@@ -18,6 +18,7 @@ export const NotesProvider = ({ children }) => {
             if (response.status !== 200) {
                 throw new Error(response?.data?.message);
             }
+
             const fetchedNotes = (response?.data?.data?.data || []).filter(
                 (note) => !note.isArchived && !note.isDeleted
             );
@@ -39,16 +40,22 @@ export const NotesProvider = ({ children }) => {
 
     const updateNoteList = (response) => {
         const { action, data } = response;
-        if (action === "add") {
-            setNotes((prevNotes) => [{ ...data }, ...prevNotes]);
-        } else if (action === "archive" || action === "trash") {
-            setNotes((prevNotes) => prevNotes.filter((note) => note.id !== data.id));
-        } else if (action === "edit") {
-            setNotes((prevNotes) =>
-                prevNotes.map((note) => (note.id === data.id ? data : note))
-            );
-        }
+        console.log("Action: ", action);
+        console.log("Data: ", data);
+        
+        setNotes((prevNotes) => {
+            if (action === "add") {
+                return [{ ...data }, ...prevNotes];
+            } else if (action === "archive" || action === "trash") {
+                return prevNotes.filter((note) => note.id !== data.id);
+            } else if (action === "edit") {
+                return prevNotes.map((note) => (note.id === data.id ? data : note));
+            }
+    
+            return prevNotes;
+        });
     };
+    
 
     return (
         <NotesContext.Provider value={{ notes, setNotes, updateNoteList, searchedText, setSearchedText, filteredNotes }}>
