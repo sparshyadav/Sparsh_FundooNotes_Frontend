@@ -7,8 +7,8 @@ import Modal from '@mui/material/Modal';
 import AddNote from '../AddNote/AddNote';
 import { useNavigate } from 'react-router-dom';
 
-const MAX_DESCRIPTION_LENGTH = 125;
-const MAX_TITLE_LENGTH = 50;
+const MAX_DESCRIPTION_LENGTH = 360;
+const MAX_TITLE_LENGTH = 75;
 
 const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
     const navigate = useNavigate();
@@ -121,3 +121,7 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
 };
 
 export default NoteCard;
+
+
+
+

@@ -1,20 +1,20 @@
 .note-card-main-container {
-    border: 1px solid #E0E0E0;
-    margin: 5px;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
-    transition: 0.5s;
-    width: 20%;
+    transition: 0.3s;
+    width: 100%;  
+    min-width: 220px;
+    max-width: 100%;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-left: 15px;
-    gap: 10px;
     min-height: 150px;
     overflow: hidden;
 }
 
 .note-card-main-container.expanded-card {
-    max-height: 250px;
+    max-height: none;
 }
 
 .note-card-main-container:hover {
