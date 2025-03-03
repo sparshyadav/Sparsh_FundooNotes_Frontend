@@ -1,4 +1,4 @@
-.notes-container{
+.notes-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -7,31 +7,30 @@
     padding-bottom: 50px;
 }
 
-.notes-main-container{
+.notes-main-container {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start !important;
-    gap: 2px;
+    display: block;  
+    padding: 10px;
 }
 
-.notes-addnote-component{
+.notes-addnote-component {
     width: 100%;
     margin-bottom: 0;
 }
 
+.note-card {
+    min-width: 220px; 
+    max-width: 100%;   
+}
 
 @media (max-width: 768px) {
-    .notes-container{
+    .notes-container {
         width: 100%;
     }
 }
 
 @media (max-width: 425px) {
-    .notes-container{
+    .notes-container {
         width: 100%;
     }
 }
-
-
-
