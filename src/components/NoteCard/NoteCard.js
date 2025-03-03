@@ -40,7 +40,11 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                 updateList({ action: "archive", data: { ...noteDetails, isArchived: !noteDetails.isArchived } });
             } else if (action === 'trash') {
                 await trashNoteApi({ "noteIdList": [`${noteDetails.id}`], "isDeleted": !noteDetails.isDeleted });
-                updateList({ action: "trash", data: { ...noteDetails, isDeleted: !noteDetails.isDeleted } });
+                updateList({ action: "trash", data: { ...noteDetails, isDeleted: true } });
+            }
+            else if (action === 'untrash') {
+                await trashNoteApi({ "noteIdList": [`${noteDetails.id}`], "isDeleted": !noteDetails.isDeleted });
+                updateList({ action: "untrash", data: { ...noteDetails, isDeleted: false } });
             } else if (action === 'deleteForever') {
                 await deleteNoteForeverApi({ "noteIdList": [`${noteDetails.id}`] });
                 updateList({ action: "trash", data: { ...noteDetails, isDeleted: false } });
@@ -70,7 +74,7 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
             <div className='card-container-options'>
                 {noteDetails?.isDeleted ? (
                     <>
-                        <ArchiveRestore className='icons' onClick={() => handleIconClick('trash')} />
+                        <ArchiveRestore className='icons' onClick={() => handleIconClick('untrash')} />
                         <Trash2 className='icons' onClick={() => handleIconClick('deleteForever')} />
                     </>
                 ) : (
