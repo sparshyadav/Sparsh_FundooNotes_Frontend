@@ -1,0 +1,39 @@
+.reminder-main-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+}
+
+.reminder-center-container {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    width: 125px;
+    height: 125px;
+    color: #5F6368;
+    opacity: 0.5;
+}
+
+.text {
+    font-size: 25px;
+    font-weight: 600;
+    color: #5F6368;
+    opacity: 0.8;
+    text-align: center;
+}
+
+@media(max-width: 500px) {
+    .icon {
+        width: 85px;
+        height: 85px;
+    }
+
+    .text {
+        font-size: 20px;
+    }
+}
