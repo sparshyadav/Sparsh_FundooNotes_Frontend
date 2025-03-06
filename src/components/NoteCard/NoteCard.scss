@@ -2,7 +2,8 @@
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     transition: 0.3s;
-    width: 100%;  
+    // width: 100%;  
+    width: 18%;
     min-width: 220px;
     max-width: 100%;
     padding: 15px;
@@ -157,4 +158,42 @@
     overflow-wrap: break-word;
     white-space: normal;
     max-width: 90%;
+}
+
+.reminder-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #f1f3f4;
+    max-width: 165px;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.reminder-box {
+    color: #3c4043;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    transition: 0.8s;
+}
+
+.reminder-close {
+    margin-right: 0;
+    display: none;
+    position: relative;
+    top: 1.5px;
+}
+
+.reminder-container:hover .reminder-close {
+    display: block; 
+}
+
+.reminder-close-icon{
+    height: 15px;
+    width: 15px;
+    color: grey;
 }

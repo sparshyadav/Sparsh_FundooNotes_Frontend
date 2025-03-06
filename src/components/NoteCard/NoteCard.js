@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './NoteCard.scss';
-import { BellPlus, UserPlus, Image, FolderDown, ArchiveRestore, Trash2, Palette } from 'lucide-react';
+import { CircleX, UserPlus, Image, FolderDown, ArchiveRestore, Trash2, Palette } from 'lucide-react';
 import LongMenu from './LongMenu';
-import { archiveNoteApi, changeColorAPI, deleteNoteForeverApi, trashNoteApi } from '../../utils/API';
+import ReminderIcon from './ReminderIcon'
+import { addReminderAPI, archiveNoteApi, changeColorAPI, deleteNoteForeverApi, removeReminderAPI, trashNoteApi } from '../../utils/API';
 import Modal from '@mui/material/Modal';
 import AddNote from '../AddNote/AddNote';
 import { useNavigate } from 'react-router-dom';
@@ -54,6 +55,17 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                 changeColorAPI({ "noteIdList": [`${noteDetails.id}`], color: data });
                 updateList({ action: 'color', data: { ...noteDetails, color: selectedColor } });
             }
+            else if (action === 'reminder') {
+                await addReminderAPI({ "noteIdList": [`${noteDetails.id}`], reminder: data })
+                updateList({ action: 'reminder', data: { ...noteDetails, reminder: data } })
+            }
+            else if (action === 'removeReminder') {
+                console.log("Inside Remove");
+                console.log("Action: ", action);
+                console.log("Data: ", data);
+                removeReminderAPI({ "noteIdList": [`${noteDetails.id}`] }).then((res) => console.log("response: ", res));
+                updateList({ action: 'removeReminder', data: { ...noteDetails } })
+            }
         } catch (error) {
             console.error("Error performing action:", error);
         }
@@ -71,6 +83,20 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                 <h3 className='card-title'>{truncatedTitle}</h3>
                 <p className='card-desc'>{truncatedDescription}</p>
             </div>
+            <div className='reminder-container'>
+                {Array.isArray(noteDetails?.reminder) && noteDetails.reminder.length > 0 && (
+                    <div className='reminder-container'>
+                        <div className="reminder-box">
+                            <span className="reminder-text">
+                                {new Date(noteDetails.reminder[0]).toLocaleString()}
+                            </span>
+                        </div>
+                        <div className='reminder-close' onClick={() => handleIconClick('removeReminder', noteDetails)}>
+                            <CircleX className='reminder-close-icon' />
+                        </div>
+                    </div>
+                )}
+            </div>
             <div className='card-container-options'>
                 {noteDetails?.isDeleted ? (
                     <>
@@ -79,7 +105,7 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                     </>
                 ) : (
                     <>
-                        <BellPlus className='icons' />
+                        <ReminderIcon className='icons menu-icon' handleIconClick={handleIconClick} />
                         <UserPlus className='icons' />
                         <Image className='icons' />
                         <div className="color-picker-container">
