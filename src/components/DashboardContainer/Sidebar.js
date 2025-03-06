@@ -1,5 +1,5 @@
 import './DashboardContainer.scss';
-import { Lightbulb, FolderDown, Trash2 } from "lucide-react";
+import { Lightbulb, FolderDown, Trash2, BellPlus, Tag } from "lucide-react";
 import './Sidebar.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 
@@ -18,6 +18,16 @@ const sidebarItemsList = [
         name: "Trash", 
         icon: Trash2,
         path: '/dashboard/trash'
+    },
+    {
+        name: 'reminder',
+        icon: BellPlus,
+        path: '/dashboard/reminder'
+    },
+    {
+        name: 'labels',
+        icon: Tag,
+        path: '/dashboard/labels'
     }
 ];
 
