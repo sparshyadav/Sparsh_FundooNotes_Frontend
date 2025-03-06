@@ -7,6 +7,8 @@ import TrashContainer from './components/TrashContainer/TrashContainer';
 import ArchiveContainer from './components/ArchiveContainer/ArchiveContainer';
 import Login from './components/Login/Login';
 import { NotesProvider } from './context/NotesContext';
+import ReminderContainer from './components/ReminderContainer/ReminderContainer';
+import LabelContainer from './components/LabelContainer/LabelContainer';
 
 const RoutingModule = () => {
     const route = createBrowserRouter([
@@ -39,6 +41,14 @@ const RoutingModule = () => {
                 {
                     path: 'archive',
                     element: <ArchiveContainer />
+                },
+                {
+                    path: "reminder",
+                    element: <ReminderContainer />
+                },
+                {
+                    path: "labels",
+                    element: <LabelContainer />
                 }
             ]
         }
