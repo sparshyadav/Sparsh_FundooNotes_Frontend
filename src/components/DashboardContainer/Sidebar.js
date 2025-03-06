@@ -20,12 +20,12 @@ const sidebarItemsList = [
         path: '/dashboard/trash'
     },
     {
-        name: 'reminder',
+        name: 'Reminder',
         icon: BellPlus,
         path: '/dashboard/reminder'
     },
     {
-        name: 'labels',
+        name: 'Labels',
         icon: Tag,
         path: '/dashboard/labels'
     }
