@@ -110,7 +110,33 @@ export const changeColorAPI = async (payload) => {
             }
         });
     } catch (error) {
-        console.error("Error in editNoteApi: ", error);
+        console.error("Error in changeColorAPI: ", error);
+        throw error;
+    }
+};
+
+export const addReminderAPI = async (payload) => {
+    try {
+        return await axios.post("https://fundoonotes.incubation.bridgelabz.com/api/notes/addUpdateReminderNotes", payload, {
+            headers: {
+                Authorization: localStorage.getItem('token')
+            }
+        });
+    } catch (error) {
+        console.error("Error in addReminderAPI: ", error);
+        throw error;
+    }
+};
+
+export const removeReminderAPI = async (payload) => {
+    try {
+        return await axios.post("https://fundoonotes.incubation.bridgelabz.com/api/notes/removeReminderNotes", payload, {
+            headers: {
+                Authorization: localStorage.getItem('token')
+            }
+        });
+    } catch (error) {
+        console.error("Error in removeReminderAPI: ", error);
         throw error;
     }
 };
