@@ -140,3 +140,11 @@ export const removeReminderAPI = async (payload) => {
         throw error;
     }
 };
+
+export const getReminderNotes = () => {
+    return axios.get(`https://fundoonotes.incubation.bridgelabz.com/api/notes/getReminderNotesList`, {
+        headers: {
+            Authorization: localStorage.getItem('token')
+        }
+    })
+}
