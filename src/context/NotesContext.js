@@ -47,7 +47,7 @@ export const NotesProvider = ({ children }) => {
             } else if (action === "archive" || action === "trash") {
                 return prevNotes.filter((note) => note.id !== data.id);
             } else if (action === "unarchive") {
-                return [{ ...data, isArchived: false }, ...prevNotes];  
+                return [{ ...data, isArchived: false }, ...prevNotes];
             } else if (action === "edit") {
                 return prevNotes.map((note) => (note.id === data.id ? data : note));
             } else if (action === "reminder") {
