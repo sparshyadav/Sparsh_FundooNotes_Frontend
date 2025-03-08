@@ -18,7 +18,7 @@ const DashboardContainer = () => {
         <div className='dashboard-main-body'>
             <Navbar toggleSidebar={toggleSidebar} />
             <div className='dashboard-main-center'>
-                <Sidebar isCollapsed={isCollapsed} />
+                <Sidebar isCollapsed={isCollapsed} toggleSidebar={toggleSidebar} />
                 <div className='main-content'>
                     <Outlet />
                 </div>
