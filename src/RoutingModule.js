@@ -9,6 +9,7 @@ import Login from './components/Login/Login';
 import { NotesProvider } from './context/NotesContext';
 import ReminderContainer from './components/ReminderContainer/ReminderContainer';
 import LabelContainer from './components/LabelContainer/LabelContainer';
+import { ViewChangeProvider } from './context/ViewChangeContext';
 
 const RoutingModule = () => {
     const route = createBrowserRouter([
@@ -22,9 +23,12 @@ const RoutingModule = () => {
         },
         {
             path: '/dashboard',
-            element: <NotesProvider>
+            element:
+                <ViewChangeProvider>
+                    <NotesProvider>
                         <DashboardContainer />
-                    </NotesProvider>,
+                    </NotesProvider>
+                </ViewChangeProvider>,
             children: [
                 {
                     path: 'notes',
