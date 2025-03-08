@@ -15,7 +15,7 @@ const sidebarItemsList = [
         path: '/dashboard/archive'
     },
     {
-        name: "Trash", 
+        name: "Trash",
         icon: Trash2,
         path: '/dashboard/trash'
     },
@@ -31,11 +31,14 @@ const sidebarItemsList = [
     }
 ];
 
-const Sidebar = ({isCollapsed}) => {
+const Sidebar = ({ isCollapsed, toggleSidebar }) => {
     const location = useLocation();
 
     return (
-        <div className={`dashboard-sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+        <div
+            className={`dashboard-sidebar ${isCollapsed ? 'collapsed' : ''}`}
+            onMouseEnter={() => toggleSidebar()}
+            onMouseLeave={() => toggleSidebar()}>
             {sidebarItemsList.map((item, index) => {
                 const IconComponent = item.icon;
                 const isActive = location.pathname === item.path;
