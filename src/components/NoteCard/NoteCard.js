@@ -7,12 +7,14 @@ import { addReminderAPI, archiveNoteApi, changeColorAPI, deleteNoteForeverApi, r
 import Modal from '@mui/material/Modal';
 import AddNote from '../AddNote/AddNote';
 import { useNavigate } from 'react-router-dom';
+import { useChangeView } from '../../context/ViewChangeContext';
 
 const MAX_DESCRIPTION_LENGTH = 360;
 const MAX_TITLE_LENGTH = 75;
 
 const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
     const navigate = useNavigate();
+    const { view } = useChangeView();
 
     const [editNote, setEditNote] = useState(false);
     const [showColors, setShowColors] = useState(false);
@@ -73,7 +75,7 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
 
     return (
         <div
-            className={`note-card-main-container ${isLongDescription ? 'expanded-card' : ''}`}
+            className={`note-card-main-container ${isLongDescription ? 'expanded-card' : ''} ${view ? 'grid-view' : ''}`}
             style={{ backgroundColor: selectedColor }}
         >
             <div className='card-container-info' onClick={() => {

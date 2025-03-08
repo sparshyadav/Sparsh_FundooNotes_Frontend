@@ -3,7 +3,7 @@
     border-radius: 8px;
     transition: 0.3s;
     // width: 100%;  
-    width: 18%;
+    width: 50%;
     min-width: 220px;
     max-width: 100%;
     padding: 15px;
@@ -12,6 +12,7 @@
     justify-content: space-between;
     min-height: 150px;
     overflow: hidden;
+    margin-bottom: 15px;
 }
 
 .note-card-main-container.expanded-card {
@@ -196,4 +197,9 @@
     height: 15px;
     width: 15px;
     color: grey;
+}
+
+.grid-view{
+    // width: 100%;
+    margin-bottom: 15px;
 }
