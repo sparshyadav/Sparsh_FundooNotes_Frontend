@@ -37,8 +37,8 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
     return (
         <div
             className={`dashboard-sidebar ${isCollapsed ? 'collapsed' : ''}`}
-            onMouseEnter={() => toggleSidebar()}
-            onMouseLeave={() => toggleSidebar()}>
+            onMouseEnter={()=>toggleSidebar()}
+            onMouseLeave={()=>toggleSidebar()}>
             {sidebarItemsList.map((item, index) => {
                 const IconComponent = item.icon;
                 const isActive = location.pathname === item.path;
