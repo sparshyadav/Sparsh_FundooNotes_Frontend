@@ -38,10 +38,12 @@ cd fundoo-notes
 npm install
 ```
 
-###3️⃣ Start the development server
+### 3️⃣ Start the development server
 ```sh
 npm start
 ```
+
+---
 
 ## 📄 Usage Guide  
 1️⃣ **Sign Up / Login** to access your notes.  
