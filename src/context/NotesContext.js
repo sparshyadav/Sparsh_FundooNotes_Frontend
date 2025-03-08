@@ -9,7 +9,7 @@ export const NotesProvider = ({ children }) => {
 
     useEffect(() => {
         fetchNotes();
-    }, [notes]);
+    }, []);
 
     const fetchNotes = async () => {
         try {
