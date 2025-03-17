@@ -29,7 +29,7 @@ Follow these steps to set up **Fundoo Notes** locally:
 
 ### 1️⃣ Clone the repository
 ```sh
-git clone https://github.com/your-username/fundoo-notes.git
+git clone https://github.com/sparshyadav/fundoo-notes.git
 cd fundoo-notes
 ```
 
