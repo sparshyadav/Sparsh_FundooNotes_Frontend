@@ -33,7 +33,7 @@ function Navbar({ toggleSidebar }) {
                     <div className="header-left-container-logo">
                         <img
                             src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
-                            alt="Image not Found"
+                            alt="Not Found"
                             onClick={() => setSearchedText("")} />
                     </div>
                     <div className="header-left-container-title" onClick={() => setSearchedText("")}>
@@ -62,7 +62,6 @@ function Navbar({ toggleSidebar }) {
                                     <RotateCw className="header-icons" />
                                 </IconButton>
                             </Tooltip>
-                            {/* <RotateCw className="header-icons" /> */}
                         </div>
                         <div className="icon-div row-icon">
                             {
@@ -75,11 +74,9 @@ function Navbar({ toggleSidebar }) {
                                     <Tooltip title="Grid View">
                                         <IconButton>
                                             <LayoutGrid className="header-icons" onClick={() => setView((prev) => !prev)} />
-                                            {/* <Rows2 className="header-icons" onClick={() => setView((prev) => !prev)} /> */}
                                         </IconButton>
                                     </Tooltip>
                             }
-                            {/* <Rows2 className="header-icons" /> */}
                         </div>
                         <div className="icon-div">
                             <Tooltip title="Settings">
@@ -87,7 +84,6 @@ function Navbar({ toggleSidebar }) {
                                     <Settings className="header-icons" />
                                 </IconButton>
                             </Tooltip>
-                            {/* <Settings className="header-icons" /> */}
                         </div>
                     </div>
                     <div className="header-right-container-account">
@@ -97,7 +93,6 @@ function Navbar({ toggleSidebar }) {
                                     <Grip className="header-icons grid" />
                                 </IconButton>
                             </Tooltip>
-                            {/* <Grip className="header-icons grid" /> */}
                         </div>
                         <div className="icon-div-account">
                             <AccountMenu className="account-icon" />

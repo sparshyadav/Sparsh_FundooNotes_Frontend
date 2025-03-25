@@ -48,6 +48,8 @@ export const NotesProvider = ({ children }) => {
                 return prevNotes.filter((note) => note.id !== data.id);
             } else if (action === "unarchive") {
                 return [{ ...data, isArchived: false }, ...prevNotes];
+            } else if (action === "untrash") {
+                setNotes(notes.filter((note) => note.id !== data.id));
             } else if (action === "edit") {
                 return prevNotes.map((note) => (note.id === data.id ? data : note));
             } else if (action === "reminder") {
@@ -57,7 +59,7 @@ export const NotesProvider = ({ children }) => {
             }
             else if (action === 'removeReminder') {
                 return prevNotes.map((note) =>
-                    note.id === data.id ? { ...note } : note
+                    note.id === data.id ? { ...note, reminder: [] } : note
                 );
             }
 

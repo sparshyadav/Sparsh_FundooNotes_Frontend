@@ -3,7 +3,7 @@ import './Login.scss';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { loginApiCall } from '../../utils/API';
-import { errorToast } from '../../utils/Toast';
+import { errorToast, successToast } from '../../utils/Toast';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function Login() {
@@ -14,6 +14,8 @@ export default function Login() {
 
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
+
+    const [btnClicked, setBtnClicked] = useState(false);
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -43,12 +45,13 @@ export default function Login() {
             .then((response) => {
                 console.log("Response: ", response);
                 localStorage.setItem("token", response.data.id);
+                successToast("LoggedIn Successfully");
                 navigate('/dashboard/notes');
                 console.log(response);
 
                 if (response.status !== 200) {
                     throw new Error(response?.data?.message);
-                } 
+                }
             })
             .catch((error) => {
                 console.log("An Error Occurred While Logging In: ", error);
@@ -75,7 +78,13 @@ export default function Login() {
                     </div>
                     <div className='login-form-buttons'>
                         <NavLink to={'/signup'}><Button variant="text" className='login-button'>Create Account</Button></NavLink>
-                        <Button variant="contained" className='login-button' onClick={() => handleLogin()}>Login</Button>
+                        {
+                            btnClicked ? <Button disabled variant="contained" className='login-button'>Login</Button> :
+                                <Button variant="contained" className='login-button' onClick={() => {
+                                    setBtnClicked(true);
+                                    handleLogin()
+                                }}>Login</Button>
+                        }
                     </div>
                 </div>
             </div>

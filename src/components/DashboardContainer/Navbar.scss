@@ -130,17 +130,14 @@
     width: 24%;
     flex-shrink: 1;
     color: #5F6368;
-    // margin-top: 4px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .header-left {
         max-width: 30%;
         border: 1px soild yellow;
     }
 
-    /* Hide unnecessary elements */
     .header-left-container-menu,
     .header-right-container-icons,
     .grid-icon,
@@ -172,7 +169,6 @@
     }
 
     .dashboard-header-right-container {
-        // border: 1px solid green;
         display: flex;
         align-items: center;
         justify-content: flex-end;
@@ -182,7 +178,7 @@
         margin-right: 15px;
     }
 
-    .header-middle-search-input{
+    .header-middle-search-input {
         border: 1px solid pink;
     }
 
@@ -203,10 +199,6 @@
     }
 }
 
-.grid{
-    // margin-top: 4px;
-}
-
-.account-icon{
+.account-icon {
     margin-top: 4px;
 }

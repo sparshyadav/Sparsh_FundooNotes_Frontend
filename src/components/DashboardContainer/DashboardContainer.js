@@ -6,12 +6,9 @@ import Navbar from './Navbar';
 
 const DashboardContainer = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
-    // console.log("Outside : ", isCollapsed);
 
     const toggleSidebar = () => {
-        console.log("Is Collapsed Before: ", isCollapsed);
         setIsCollapsed(prev => !prev);
-        // console.log("Is Collapsed After: ", isCollapsed);
     };
 
     return (
