@@ -96,14 +96,13 @@ export default function Signup() {
         signinApiCall({ firstName, lastName, email, password, service: "advance" })
             .then((response) => {
                 navigate('/');
-                console.log("Response: ", response);
 
                 if (response.status !== 200) {
                     throw new Error(response?.data?.message);
                 }
             })
             .catch((error) => {
-                console.log("An Error Occurred While Signing In: ", error);
+                console.error("An Error Occurred While Signing In: ", error);
             });
     }
 

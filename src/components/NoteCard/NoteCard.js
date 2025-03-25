@@ -62,9 +62,6 @@ const NoteCard = ({ title, description = "", noteDetails, updateList }) => {
                 updateList({ action: 'reminder', data: { ...noteDetails, reminder: data } })
             }
             else if (action === 'removeReminder') {
-                console.log("Inside Remove");
-                console.log("Action: ", action);
-                console.log("Data: ", data);
                 removeReminderAPI({ "noteIdList": [`${noteDetails.id}`] }).then((res) => console.log("response: ", res));
                 updateList({ action: 'removeReminder', data: { ...noteDetails } })
             }

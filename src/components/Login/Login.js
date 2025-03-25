@@ -43,18 +43,16 @@ export default function Login() {
 
         loginApiCall({ email, password })
             .then((response) => {
-                console.log("Response: ", response);
                 localStorage.setItem("token", response.data.id);
                 successToast("LoggedIn Successfully");
                 navigate('/dashboard/notes');
-                console.log(response);
 
                 if (response.status !== 200) {
                     throw new Error(response?.data?.message);
                 }
             })
             .catch((error) => {
-                console.log("An Error Occurred While Logging In: ", error);
+                console.error("An Error Occurred While Logging In: ", error);
             });
     };
 

@@ -11,10 +11,9 @@ function ReminderContainer() {
   useEffect(() => {
     getReminderNotes()
       .then((res) => {
-        console.log("Reminder Notes: ", res);
         setReminderNotes(res?.data?.data?.data || []);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => console.error(err.message));
   }, []);
 
   return (

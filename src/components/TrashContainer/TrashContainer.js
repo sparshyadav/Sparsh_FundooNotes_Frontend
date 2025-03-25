@@ -22,8 +22,6 @@ const TrashContainer = () => {
 
   const updateNoteList = async (response) => {
     const { action, data } = response;
-    console.log("ACTION INSIDE TRASH: ", action);
-    console.log("DATA INSIDE TRASH: ", data);
 
     if (action === "untrash") {
       setNotes(notes.filter((note) => note.id !== data.id));
